@@ -30,11 +30,23 @@
     position: relative;
     padding: 5px;
     margin: 10px 0;
+    transition: var(--link-transition);
+    /* 添加过渡效果，使颜色和阴影变化平滑 */
+    
+}
+
+.archive-entry:hover .archive-entry-title {
+    color: var(--link-hover-color);
+    /* 鼠标悬停时的文字颜色 */
+    box-shadow: var(--link-hover-underline-shadow);
+    /* 鼠标悬停时的下划线阴影效果 */
 }
 
 .archive-entry-title {
     margin: 5px 0;
     font-weight: 400;
+    transition: var(--link-transition);
+    display: inline-block;
 }
 
 .archive-count,
