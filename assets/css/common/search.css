@@ -18,11 +18,18 @@
     margin: 10px 0;
     position: relative;
     font-weight: 500;
+    transition: var(--link-transition);
+    /* display: inline-block; */
 }
 
 #searchResults {
     margin: 10px 0;
     width: 100%;
+}
+
+#searchResults li:hover {
+    color: var(--link-hover-color);
+    /* box-shadow: var(--link-hover-underline-shadow); */
 }
 
 #searchResults li:active {
