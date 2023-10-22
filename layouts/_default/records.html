@@ -29,39 +29,50 @@
     {{ $book_url := .item.url }}
     {{ $cover := .item.cover_image_url }}
     {{ $cover_name := path.Base $cover }}
-    {{ $summary := .item.comment_text }}
+    {{ $summary := .item.brief }}
+    {{ $created_time := .item.created_time}}
 
-<div class="book-card">
-    <div class="book-card-cover">
-        <a href="https://neodb.social{{ $book_url }}" target="_blank">
-            <div class="cover-wrapper">
-                <img src="{{ $cover }}" alt="{{ $title }}" />
+    <!-- <div class="book-card">
+        <div class="book-card-cover">
+            <a href="https://neodb.social{{ $book_url }}" target="_blank">
+                <div class="cover-wrapper">
+                    <img src="{{ $cover }}" alt="{{ $title }}" />
+                </div>
+            </a>
+        </div>
+        <div class="book-card-content">
+            <div class="book-card-title">
+                <a href="https://neodb.social{{ $book_url }}" target="_blank">{{ $title }}</a>
             </div>
-        </a>
-    </div>
-    <div class="book-card-content">
-        <div class="book-card-title">
-            <a href="https://neodb.social{{ $book_url }}" target="_blank">{{ $title }}</a>
+            <div class="book-card-summary">
+                {{ $summary }}
+            </div>
         </div>
-        <div class="book-card-summary">
-            {{ $summary }}
+    </div> -->
+
+
+    <div class="post-entry">
+
+        <div class="post-info">
+            <header class="entry-header">
+                <h2>
+                    <a href="https://neodb.social{{ $book_url }}" target="_blank">{{ $title }}</a>
+                </h2>
+            </header>
+            <section class="entry-content">
+                <p>{{ $summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+            </section>
+        </div>
+        <div class="book-card-cover">
+            <a href="https://neodb.social{{ $book_url }}" target="_blank">
+                <div class="cover-wrapper">
+                    <img src="{{ $cover }}" alt="{{ $title }}" />
+                </div>
+            </a>
         </div>
     </div>
-</div>
 
 
-    <!-- <div class="post-info">
-        <header class="entry-header">
-            <h2>
-                {{ $title }}
-            </h2>
-        </header>
-        <section class="entry-content">
-        <p>{{ $summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
-        </section>
-
-    </div>  -->
-    
 </div>
 
 
