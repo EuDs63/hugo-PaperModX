@@ -23,7 +23,9 @@
 <!-- 获取本地 Json 数据 -->
 {{ $books := getJSON "data/neodb/book_progress.json" }}
 
-<h2 style="margin-top: 32px">最近在读</h2>
+<h2>最近在读</h2>
+<a href="https://neodb.social/developer/" target="_blank">Power by NeoDB</a>
+
 
 <div>
     {{ range $books.data }}
