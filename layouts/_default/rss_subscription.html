@@ -11,29 +11,25 @@
             {{- .Description -}}
         </div>
         {{- end }}
-        {{- if not (.Param "hideMeta") }}
-        <div class="post-meta">
-            {{- partial "post_meta.html" . -}}
-            {{/* TODO move to footer */}}
-            {{/* partial "edit_post.html" . */}}
-            {{/* partial "post_canonical.html" . */}}
-        </div>
-        {{- end }}
+
     </header>
 
-    <div class="post-content">
-        {{ $rss := getJSON "data/rss/rss_subscription.json" }}
+    {{ $rss := getJSON "data/rss/rss_subscription.json" }}
 
+    <div class="post-content">
         <div class="introduction">
             <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                <h3>更新于 {{ $rss.last_updated }}</h3>
-                <p style="font-size: 0.8em; margin-top: -10px;">tips: 使用方向键左右滑动</p>
+                <h3>更新于 {{ with $rss.last_updated }}{{ . }}{{ else }}N/A{{ end }}</h3>
+                <p style="font-size: 0.8em; margin-top: -10px;">{{ with $rss.last_updated }}tips: 使用方向键左右滑动{{ else }}No
+                    RSS
+                    data available{{ end }}</p>
             </div>
 
             <a href="https://github.com/EuDs63/TinyTinyRSS-OPML-to-MD-Table" target="_blank">Power by
                 TinyTinyRSS-OPML-to-MD-Table</a>
         </div>
 
+        {{ with $rss.data }}
         <table>
             <thead>
                 <tr>
@@ -43,7 +39,7 @@
                 </tr>
             </thead>
             <tbody>
-                {{ range $rss.data }}
+                {{ range . }}
                 <tr>
                     <td>{{ .title }}</td>
                     <td>{{ .feed_url }}</td>
@@ -52,18 +48,11 @@
                 {{ end }}
             </tbody>
         </table>
+        {{ else }}
+        <p>No RSS data available</p>
+        {{ end }}
     </div>
 
-    <!-- <footer class="post-footer">
-        {{- if (.Param "socialLinks") }}
-        {{- partial "social_links.html" . }}
-        {{- end }}
-
-        {{- if (.Param "ShowPostNavLinks") }}
-        {{- partial "post_nav_links.html" . }}
-        {{- end }}
-
-    </footer> -->
 
 </article>
 
