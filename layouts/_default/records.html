@@ -29,26 +29,9 @@
     {{ $book_url := .item.url }}
     {{ $cover := .item.cover_image_url }}
     {{ $cover_name := path.Base $cover }}
-    {{ $summary := .item.brief }}
-    {{ $created_time := .item.created_time}}
-
-    <!-- <div class="book-card">
-        <div class="book-card-cover">
-            <a href="https://neodb.social{{ $book_url }}" target="_blank">
-                <div class="cover-wrapper">
-                    <img src="{{ $cover }}" alt="{{ $title }}" />
-                </div>
-            </a>
-        </div>
-        <div class="book-card-content">
-            <div class="book-card-title">
-                <a href="https://neodb.social{{ $book_url }}" target="_blank">{{ $title }}</a>
-            </div>
-            <div class="book-card-summary">
-                {{ $summary }}
-            </div>
-        </div>
-    </div> -->
+    {{ $brief := .item.brief }}
+    {{ $comment_text := .comment_text}}
+    {{ $created_time := .created_time}}
 
 
     <div class="post-entry">
@@ -60,8 +43,13 @@
                 </h2>
             </header>
             <section class="entry-content">
-                <p>{{ $summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+                <p>{{ $brief | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}
+                </p>
             </section>
+            <p class="comment-text">
+                {{ $comment_text | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}
+            </p>
+
         </div>
         <div class="book-card-cover">
             <a href="https://neodb.social{{ $book_url }}" target="_blank">
