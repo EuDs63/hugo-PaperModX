@@ -1,4 +1,3 @@
-.buttons,
 .main .profile {
     display: flex;
     justify-content: center;
@@ -24,6 +23,7 @@
     flex-wrap: wrap;
     max-width: 400px;
     margin: 0 auto;
+    margin-top: 10px;
 }
 
 .button {
@@ -40,4 +40,11 @@
 
 .button:active {
     transform: scale(0.96);
+}
+
+.button:hover {
+background-color: #333;
+    /* 按钮背景颜色 - 悬停状态 */
+    color: #fff;
+    /* 文本颜色 - 悬停状态 */
 }
