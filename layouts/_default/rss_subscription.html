@@ -1,0 +1,70 @@
+{{- define "main" }}
+
+<article class="post-single">
+    <header class="post-header">
+
+        <h1 class="post-title">
+            {{- .Title -}}
+        </h1>
+        {{- if .Description }}
+        <div class="post-description">
+            {{- .Description -}}
+        </div>
+        {{- end }}
+        {{- if not (.Param "hideMeta") }}
+        <div class="post-meta">
+            {{- partial "post_meta.html" . -}}
+            {{/* TODO move to footer */}}
+            {{/* partial "edit_post.html" . */}}
+            {{/* partial "post_canonical.html" . */}}
+        </div>
+        {{- end }}
+    </header>
+
+    <div class="post-content">
+        {{ $rss := getJSON "data/rss/rss_subscription.json" }}
+
+        <div class="introduction">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                <h3>更新于 {{ $rss.last_updated }}</h3>
+                <p style="font-size: 0.8em; margin-top: -10px;">tips: 使用方向键左右滑动</p>
+            </div>
+
+            <a href="https://github.com/EuDs63/TinyTinyRSS-OPML-to-MD-Table" target="_blank">Power by
+                TinyTinyRSS-OPML-to-MD-Table</a>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Feed URL</th>
+                    <th>HTML URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ range $rss.data }}
+                <tr>
+                    <td>{{ .title }}</td>
+                    <td>{{ .feed_url }}</td>
+                    <td>{{ .html_url }}</td>
+                </tr>
+                {{ end }}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- <footer class="post-footer">
+        {{- if (.Param "socialLinks") }}
+        {{- partial "social_links.html" . }}
+        {{- end }}
+
+        {{- if (.Param "ShowPostNavLinks") }}
+        {{- partial "post_nav_links.html" . }}
+        {{- end }}
+
+    </footer> -->
+
+</article>
+
+{{ end }}
