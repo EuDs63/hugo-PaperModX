@@ -20,10 +20,19 @@
 }
 
 .buttons {
-    flex-wrap: wrap;
-    max-width: 400px;
-    margin: 0 auto;
-    margin-top: 10px;
+    display: flex;
+    /* 将按钮放在一行上 */
+    justify-content: center;
+    /* 水平居中按钮 */
+    margin-top: 20px;
+    /* 修改上边距 */
+}
+
+/* 在小屏幕上，按钮垂直堆叠 */
+@media screen and (max-width: 600px) {
+    .buttons {
+        flex-direction: column;
+    }
 }
 
 .button {
