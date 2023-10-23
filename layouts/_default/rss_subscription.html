@@ -19,7 +19,7 @@
     <div class="post-content">
         <div class="introduction">
             <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                <h3>更新于 {{ with $rss.last_updated }}{{ . }}{{ else }}N/A{{ end }}</h3>
+                <h3>更新于 {{ $rss.last_updated }} , 共订阅 {{ $rss.count}} 个网站</h3>
                 <p style="font-size: 0.8em; margin-top: -10px;">{{ with $rss.last_updated }}tips: 使用方向键左右滑动{{ else }}No
                     RSS
                     data available{{ end }}</p>
