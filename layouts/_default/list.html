@@ -30,7 +30,7 @@
 {{- end }}
 
 
-{{- $pages := .Pages.ByLastmod.Reverse.ByWeight }}
+{{- $pages := .Pages.ByLastmod.Reverse }}
 {{- if .IsHome }}
   {{/* get all regular pages instead of pages in a section */}}
   {{- $pages = where site.RegularPages "Section" "in" site.Params.mainSections }}
